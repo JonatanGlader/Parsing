@@ -1,4 +1,5 @@
 package ParsingPackage;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ParsingMain {
 			
 			records.remove(0);//removes first the first row of the csv file
 			
+			//here is where the program checks the file.
 			namesWithLetter = checkNamesForA(records, letterToCheckFor); //checks how many names contains chosen letter
 			System.out.println("Amount of names containing the letter '" + letterToCheckFor + "' is: " +namesWithLetter);
 			assignmentWorkes = checkForWorkAssignment(records, workAssignmentToCheckFor); //checks amount of people working with a certain assignment
@@ -34,13 +36,6 @@ public class ParsingMain {
 			System.out.println();
 			ceckTime(records); //checks for same timestamps
 			nameAndEmail(records); //sort outs every persons name and email, and warns if an email has already been used
-			
-			for(List<String> b:records){ 
-				//System.out.println(b);
-				
-			}
-			
-
 		}
 		
 		private static int checkNamesForA(List<List<String>> list, String letter)
@@ -67,7 +62,7 @@ public class ParsingMain {
 			int i = 0;
 			for(List<String> row:list)
 			{
-				if(row.get(6).equals(assignment)) //checks the assignment row for wanted assignments
+				if(row.get(6).equals(assignment)) //checks the assignment row for the wanted assignment
 				{
 					i = i+2; //if it contains wanted assignment (each row contains 2 people)
 				}
@@ -84,12 +79,12 @@ public class ParsingMain {
 				if(!row.get(0).equals("")) //if the row doesnt contain any timestamp, it ignores it
 				{
 					int i = 0;
-					for(List<String> row2:list)
+					for(List<String> row2:list) //Iterates each timestamp against the whole list
 					{
 						if(row.get(0).equals(row2.get(0))) //chekcs if there are any timestamps that are the same
 						{
 							i++;
-							if (i > 1)
+							if (i > 1) //since each timestamp will find itself, it will always be 1, if there is more it will be more than 1
 							{
 								System.out.println("Same timestamp found at:");
 								usersWithSameTimestamp = true;
@@ -99,7 +94,7 @@ public class ParsingMain {
 					}
 				}
 			}
-			if (usersWithSameTimestamp == false)
+			if (usersWithSameTimestamp == false) //if no users had the same timestamp, this will be false
 			{
 				System.out.println("no users had the same timestamp!");
 			}
