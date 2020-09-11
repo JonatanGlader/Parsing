@@ -81,7 +81,7 @@ public class ParsingMain {
 					int i = 0;
 					for(List<String> row2:list) //Iterates each timestamp against the whole list
 					{
-						if(row.get(0).equals(row2.get(0))) //chekcs if there are any timestamps that are the same
+						if(row.get(0).equals(row2.get(0))) //checks if there are any timestamps that are the same
 						{
 							i++;
 							if (i > 1) //since each timestamp will find itself, it will always be 1, if there is more it will be more than 1
